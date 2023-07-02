@@ -145,8 +145,8 @@ yay -S base-devel rustup pacman-contrib kitty\
   - copy files in your $HOME/.config/ Before that backup your previous config files
 ```bash
 git clone https://github.com/sanbids/hyprland
-cd dots
-cp -r ./configs/* ~/.config/
+cd hyprland
+cp -r ./.configs/* ~/.config/
 ```
 
 </div>
