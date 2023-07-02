@@ -79,7 +79,7 @@ yay -S --noconfirm --needed base-devel rustup pacman-contrib kitty\
   python-requests starship \
   swappy grim slurp gvfs gvfs-afc gvfs-mtp gvfs-nfs \
   bluez bluez-utils lxappearance xfce4-settings gtk3 qt5ct \ 
-  xdg-desktop-portal-gtk hyprland bspwm 
+ hyprland bspwm 
   
 ```
 
@@ -131,7 +131,7 @@ yay -S --noconfirm --needed base-devel rustup pacman-contrib kitty\
   python-requests starship \
   swappy grim slurp gvfs gvfs-afc gvfs-mtp gvfs-nfs \
   bluez bluez-utils lxappearance xfce4-settings gtk3 qt5ct bspwm \
-  xdg-desktop-portal-gtk hyprland 
+   hyprland 
 ```
 </div>
 
