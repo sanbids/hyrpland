@@ -56,8 +56,28 @@
   ```zsh
    sudo pacman -S git stow
   ```
+  
+- Install waybar, Rofi, Dunst, kitty terminal, swaybg, swaylock-fancy, swayidle, pamixer, light, Brillo etc..
+
+```
+yay -S base-devel rustup pacman-contrib kitty\
+  alacritty brightnessctl dunst rofi lsd \
+  jq polkit-gnome git playerctl mpd \
+  ncmpcpp geany ranger mpc \
+  feh pamixer libwebp \
+  swaylock papirus-icon-theme \
+  waybar-hyprland \
+  swaybg swaylock-effects wofi wlogout mako thunar \
+  noto-fonts-emoji wlr-recorder \
+  python-requests starship \
+  swappy grim slurp gvfs gvfs-afc gvfs-mtp gvfs-nfs \
+  bluez bluez-utils lxappearance xfce4-settings \
+  dracula-gtk-theme dracula-icons-git xdg-desktop-portal-gtk hyprland --noconfirm --needed
+  
+```
 
   - Clone this repo and stow it
+  
   ```zsh
   git clone https://github.com/sanbids/hyrpland && cd hyprland && stow .
   ```
