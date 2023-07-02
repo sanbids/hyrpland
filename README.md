@@ -51,11 +51,17 @@
 
 <div align="left">
   
-- Just copy line on your terminal after then done 
+- Install stow and git
 
   ```zsh
-  git clone -S hyprland-git
+   sudo pacman -S git stow
   ```
+
+  - Clone this repo and stow it
+  ```zsh
+  git clone https://github.com/sanbids/hyrpland && cd hyprland && stow .
+  ```
+  
 </div>
 
 
