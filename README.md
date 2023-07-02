@@ -60,7 +60,7 @@
 - Install waybar, Rofi, Dunst, kitty terminal, swaybg, swaylock-fancy, swayidle, pamixer, light, Brillo etc..
 
 ```zsh
-yay -S base-devel rustup pacman-contrib kitty\
+yay -S --noconfirm --needed base-devel rustup pacman-contrib kitty\
   alacritty brightnessctl dunst rofi lsd \
   jq polkit-gnome git playerctl mpd \
   ncmpcpp geany ranger mpc \
@@ -68,11 +68,11 @@ yay -S base-devel rustup pacman-contrib kitty\
   swaylock papirus-icon-theme \
   waybar-hyprland \
   swaybg swaylock-effects wofi wlogout mako thunar \
-  noto-fonts-emoji wlr-recorder \
+  noto-fonts-emoji \
   python-requests starship \
   swappy grim slurp gvfs gvfs-afc gvfs-mtp gvfs-nfs \
   bluez bluez-utils lxappearance xfce4-settings gtk3 qt5ct \ 
-  dracula-gtk-theme dracula-icons-git xdg-desktop-portal-gtk hyprland bspwm --noconfirm --needed
+  xdg-desktop-portal-gtk hyprland bspwm 
   
 ```
 
@@ -105,7 +105,7 @@ yay -S base-devel rustup pacman-contrib kitty\
 - Install waybar, Rofi, Dunst, kitty terminal, swaybg, swaylock-fancy, swayidle, pamixer, light, Brillo etc..
 
 ```zsh
-yay -S base-devel rustup pacman-contrib kitty\
+yay -S --noconfirm --needed base-devel rustup pacman-contrib kitty\
   alacritty brightnessctl dunst rofi lsd \
   jq polkit-gnome git playerctl mpd \
   ncmpcpp geany ranger mpc \
@@ -113,11 +113,11 @@ yay -S base-devel rustup pacman-contrib kitty\
   swaylock papirus-icon-theme \
   waybar-hyprland \
   swaybg swaylock-effects wofi wlogout mako thunar \
-  noto-fonts-emoji wlr-recorder \
+  noto-fonts-emoji  \
   python-requests starship \
   swappy grim slurp gvfs gvfs-afc gvfs-mtp gvfs-nfs \
   bluez bluez-utils lxappearance xfce4-settings gtk3 qt5ct bspwm \
-  dracula-gtk-theme dracula-icons-git xdg-desktop-portal-gtk hyprland --noconfirm --needed
+  xdg-desktop-portal-gtk hyprland 
 ```
 </div>
 
