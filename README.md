@@ -59,7 +59,7 @@
   
 - Install waybar, Rofi, Dunst, kitty terminal, swaybg, swaylock-fancy, swayidle, pamixer, light, Brillo etc..
 
-```
+```zsh
 yay -S base-devel rustup pacman-contrib kitty\
   alacritty brightnessctl dunst rofi lsd \
   jq polkit-gnome git playerctl mpd \
@@ -104,7 +104,7 @@ yay -S base-devel rustup pacman-contrib kitty\
   
 - Install waybar, Rofi, Dunst, kitty terminal, swaybg, swaylock-fancy, swayidle, pamixer, light, Brillo etc..
 
-```
+```zsh
 yay -S base-devel rustup pacman-contrib kitty\
   alacritty brightnessctl dunst rofi lsd \
   jq polkit-gnome git playerctl mpd \
@@ -131,7 +131,7 @@ yay -S base-devel rustup pacman-contrib kitty\
 - [Iosevka Nerd Font](https://github.com/ryanoasis/nerd-fonts/releases/download/v2.3.3/Iosevka.zip)
 
 - [Font Awesome](https://archlinux.org/packages/community/any/ttf-font-awesome/)
-  ```
+  ```zsh
   yay -S ttf-font-awesome ttf-jetbrains-mono ttf-jetbrains-mono-nerd ttf-terminus-nerd ttf-inconsolata ttf-joypixels --noconfirm --needed
   ```
   </div>
