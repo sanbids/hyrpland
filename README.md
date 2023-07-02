@@ -71,8 +71,8 @@ yay -S base-devel rustup pacman-contrib kitty\
   noto-fonts-emoji wlr-recorder \
   python-requests starship \
   swappy grim slurp gvfs gvfs-afc gvfs-mtp gvfs-nfs \
-  bluez bluez-utils lxappearance xfce4-settings \
-  dracula-gtk-theme dracula-icons-git xdg-desktop-portal-gtk hyprland --noconfirm --needed
+  bluez bluez-utils lxappearance xfce4-settings gtk3 qt5ct \ 
+  dracula-gtk-theme dracula-icons-git xdg-desktop-portal-gtk hyprland bspwm --noconfirm --needed
   
 ```
 
@@ -116,7 +116,7 @@ yay -S base-devel rustup pacman-contrib kitty\
   noto-fonts-emoji wlr-recorder \
   python-requests starship \
   swappy grim slurp gvfs gvfs-afc gvfs-mtp gvfs-nfs \
-  bluez bluez-utils lxappearance xfce4-settings \
+  bluez bluez-utils lxappearance xfce4-settings gtk3 qt5ct bspwm \
   dracula-gtk-theme dracula-icons-git xdg-desktop-portal-gtk hyprland --noconfirm --needed
 ```
 </div>
