@@ -94,8 +94,15 @@ yay -S --noconfirm --needed base-devel rustup pacman-contrib kitty\
 </div>
 
 <div align="left">
+
+- First of all, Update your system
+
+```bash
+sudo pacman -Syu
+
+```
   
-  - First of all, Install the newest [Hyprland](https://hyprland.org/) using this [guide](https://wiki.hyprland.org/Getting-Started/Installation/) depend on your Distro:
+  - Then Install the newest [Hyprland](https://hyprland.org/) using this [guide](https://wiki.hyprland.org/Getting-Started/Installation/) depend on your Distro:
 
   ```zsh
   yay -S hyprland-git
