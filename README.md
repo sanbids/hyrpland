@@ -50,6 +50,13 @@
 </div>
 
 <div align="left">
+
+- First of all, Update your system
+
+```bash
+sudo pacman -Syu
+
+```
   
 - Install stow and git
 
