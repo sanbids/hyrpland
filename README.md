@@ -1,5 +1,5 @@
 <div align="center">
-<img alt="Profiles Pictures" src="https://raw.githubusercontent.com/sanbids/hyprland/main/screenshot/face.jpg" width="200" height="200" style="border-radius: 15px;"/>
+<img alt="Profiles Pictures" src="https://raw.githubusercontent.com/sanbids/hyrpland/main/screenshot/face.jpg" width="200" height="200" style="border-radius: 15px;"/>
 </div>
 
 <div align="center">
