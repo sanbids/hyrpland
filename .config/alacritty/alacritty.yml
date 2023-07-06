@@ -9,7 +9,7 @@ import:
   
 window:
   padding:
-    x: 15
+    x: 25
     y: 15
 
   decorations: none

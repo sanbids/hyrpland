@@ -10,6 +10,7 @@ export EDITOR='lvim'
 export TERMINAL='kitty'
 export BROWSER='firefox'
 export HISTORY_IGNORE="(ls|cd|pwd|exit|sudo reboot|history|cd -|cd ..)"
+xset r rate 300 40
 
 if [ -d "$HOME/.local/bin" ] ;
   then PATH="$HOME/.local/bin:$PATH"
@@ -39,7 +40,7 @@ alias la="lsd  -a"
 alias lla="lsd  -al"
 alias zzz="lvim ~/.zshrc"
 alias fd="fd --hidden"
-alias rg="rg --hidden"
+alias rg="rg --hidden --no-messages"
 alias xprop="hyprprop"
 
 export PATH=~/.local/bin/:$PATH
@@ -146,7 +147,7 @@ fi
 #  ├─┤│  │├─┤└─┐
 #  ┴ ┴┴─┘┴┴ ┴└─┘
 alias musica="ncmpcpp"
-
+TERM=xterm-256color
 
 #  ┌─┐┬ ┬┌┬┐┌─┐  ┌─┐┌┬┐┌─┐┬─┐┌┬┐
 #  ├─┤│ │ │ │ │  └─┐ │ ├─┤├┬┘ │ 
