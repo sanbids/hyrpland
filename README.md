@@ -41,6 +41,7 @@
 
 <div>
   <img src="https://raw.githubusercontent.com/sanbids/hyrpland/main/wallpaper/first.png" alt="wallpaper">
+  <br>
   <img src="https://raw.githubusercontent.com/sanbids/hyrpland/main/wallpaper/second.png" alt="wallpaper1">
 </div>
 <br>
