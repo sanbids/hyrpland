@@ -35,7 +35,7 @@ linters.setup({
 	{
 		command = "shellcheck",
 		args = { "--severity", "warning" },
-		filetypes = { "bash" },
+		filetypes = { "bash", "zsh" },
 	},
 	{ command = "flake8", filetypes = { "python" } },
 })

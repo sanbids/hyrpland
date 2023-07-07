@@ -30,6 +30,7 @@ autoload -Uz compinit
 compinit
 export LS_COLORS="$(vivid generate $HOME/.config/vivid/colorschme-lsd.yaml)"
 export PATH=~/.cargo/bin:$PATH
+export MANPAGER="sh -c 'sed -e s/.\\\\x08//g | bat -l man -p'"
 
 eval "$(zoxide init zsh)"
 eval "$(starship init zsh)"
@@ -152,3 +153,9 @@ TERM=xterm-256color
 #  ┌─┐┬ ┬┌┬┐┌─┐  ┌─┐┌┬┐┌─┐┬─┐┌┬┐
 #  ├─┤│ │ │ │ │  └─┐ │ ├─┤├┬┘ │ 
 #  ┴ ┴└─┘ ┴ └─┘  └─┘ ┴ ┴ ┴┴└─ ┴ 
+
+
+if ! test $XDG_CURRENT_DESKTOP 
+then
+  $HOME/.local/share/asciiart/zwaves
+fi
