@@ -10,7 +10,11 @@ export EDITOR='lvim'
 export TERMINAL='kitty'
 export BROWSER='firefox'
 export HISTORY_IGNORE="(ls|cd|pwd|exit|sudo reboot|history|cd -|cd ..)"
+
+if ! test XDG_CURRENT_DESKTOP
+then
 xset r rate 300 40
+fi
 
 if [ -d "$HOME/.local/bin" ] ;
   then PATH="$HOME/.local/bin:$PATH"
