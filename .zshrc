@@ -47,6 +47,7 @@ alias zzz="lvim ~/.zshrc"
 alias fd="fd --hidden"
 alias rg="rg --hidden --no-messages"
 alias xprop="hyprprop"
+alias cat="bat"
 
 export PATH=~/.local/bin/:$PATH
 
