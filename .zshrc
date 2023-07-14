@@ -36,6 +36,7 @@ export LS_COLORS="$(vivid generate $HOME/.config/vivid/colorschme-lsd.yaml)"
 export PATH=~/.cargo/bin:$PATH
 export MANPAGER="sh -c 'sed -e s/.\\\\x08//g | bat -l man -p'"
 
+
 eval "$(zoxide init zsh)"
 eval "$(starship init zsh)"
 alias v=lvim
@@ -47,7 +48,7 @@ alias zzz="lvim ~/.zshrc"
 alias fd="fd --hidden"
 alias rg="rg --hidden --no-messages"
 alias xprop="hyprprop"
-alias cat="bat"
+alias cat="bat --theme=zenburn --style=plain"
 
 export PATH=~/.local/bin/:$PATH
 
