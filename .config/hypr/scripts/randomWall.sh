@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DIR=$HOME/.config/bspwm/rices/emilia/favwall/
+DIR=$HOME/.config/bspwm/rices/emilia/walls/
 PICS=($(ls ${DIR}))
 
 RANDOMPICS=${PICS[ $RANDOM % ${#PICS[@]} ]}

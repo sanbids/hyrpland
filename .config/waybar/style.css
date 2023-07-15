@@ -35,7 +35,7 @@ window#waybar.hidden {
 }
 
 #workspaces button.active {
-  color: #6a92d7;
+  color: #ffcccb;
 }
 
 #workspaces button.urgent {

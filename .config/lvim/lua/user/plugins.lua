@@ -1,5 +1,11 @@
 lvim.plugins = {
 	{
+		"barrett-ruth/live-server.nvim",
+		build = "yarn global add live-server",
+		config = true,
+	},
+	{ "CRAG666/code_runner.nvim", config = true },
+	{
 		"microsoft/vscode-js-debug",
 		opt = true,
 		run = "npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out",

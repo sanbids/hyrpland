@@ -49,8 +49,11 @@ alias fd="fd --hidden"
 alias rg="rg --hidden --no-messages"
 alias xprop="hyprprop"
 alias cat="bat --theme=zenburn --style=plain"
+alias ip="ip -c"
 
 export PATH=~/.local/bin/:$PATH
+export PATH=~/.bun/bin/:$PATH
+
 
 
 set preview_images true 
@@ -165,3 +168,18 @@ if ! test $XDG_CURRENT_DESKTOP
 then
   $HOME/.local/share/asciiart/zwaves
 fi
+
+# bun completions
+[ -s "/home/sanbid/.bun/_bun" ] && source "/home/sanbid/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+# pnpm
+export PNPM_HOME="/home/sanbid/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
