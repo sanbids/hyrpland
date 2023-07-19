@@ -21,6 +21,7 @@ lvim.transparent_window = true
 lvim.colorscheme = themes.lunar
 
 local extra_opts = {
+
 	sonokai = {
 		styles = {
 			espresso = "espresso",
