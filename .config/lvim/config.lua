@@ -13,6 +13,7 @@ reload("user.boole")
 require("nvim-lightbulb").setup({
 	autocmd = { enabled = true },
 })
+
 vim.opt.fillchars = { eob = " " }
 
 require("hlsearch").setup({

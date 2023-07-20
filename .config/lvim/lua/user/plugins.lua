@@ -1,8 +1,20 @@
 lvim.plugins = {
-	{ "dundalek/lazy-lsp.nvim", requires = { "neovim/nvim-lspconfig" } },
 	{
-		"vuki656/package-info.nvim",
-		requires = "MunifTanjim/nui.nvim",
+		"Pocco81/true-zen.nvim",
+		config = function()
+			require("true-zen").setup({
+				-- your config goes here
+				-- or just leave it empty :)
+			})
+		end,
+	},
+	{
+		"folke/zen-mode.nvim",
+		opts = {
+			-- your configuration comes here
+			-- or leave it empty to use the default settings
+			-- refer to the configuration section below
+		},
 	},
 	{
 		"stevearc/oil.nvim",
@@ -10,29 +22,7 @@ lvim.plugins = {
 		-- Optional dependencies
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 	},
-	{
-		"mrbjarksen/neo-tree-diagnostics.nvim",
-		requires = "nvim-neo-tree/neo-tree.nvim",
-		module = "neo-tree.sources.diagnostics", -- if wanting to lazyload
-	},
-	{
-		"neovim/nvim-lspconfig",
-		dependencies = {
-			{
-				"SmiteshP/nvim-navbuddy",
-				dependencies = {
-					"SmiteshP/nvim-navic",
-					"MunifTanjim/nui.nvim",
-				},
-				opts = { lsp = { auto_attach = true } },
-			},
-		},
-		-- your lsp config or other stuff
-	},
 	{ "kosayoda/nvim-lightbulb" },
-	{
-		"ray-x/lsp_signature.nvim",
-	},
 	-- {
 	-- 	"stevearc/dressing.nvim",
 	-- 	opts = {},
