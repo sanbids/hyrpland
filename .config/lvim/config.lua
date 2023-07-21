@@ -9,20 +9,7 @@ reload("user.banners")
 reload("user.which-key")
 reload("user.code_runner")
 reload("user.boole")
-
-require("nvim-lightbulb").setup({
-	autocmd = { enabled = true },
-})
-
-vim.opt.fillchars = { eob = " " }
-
-require("hlsearch").setup({
-	"*",
-})
-require("nvim-lastplace").setup({})
-
-require("better_escape").setup({
-	timeout = 300,
-})
-
-require("oil").setup()
+reload("user.hlsearch")
+reload("user.lastplace")
+reload("user.betterEscape")
+reload("user.oil")

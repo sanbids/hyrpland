@@ -1,6 +1,7 @@
 vim.opt.shiftwidth = 2
 vim.opt.tabstop = 2
 vim.opt.relativenumber = true
+vim.opt.fillchars = { eob = " " }
 
 -- general
 lvim.log.level = "info"

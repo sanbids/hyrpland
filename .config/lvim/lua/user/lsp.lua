@@ -1,9 +1,10 @@
 lvim.builtin.treesitter.auto_install = true
 lvim.builtin.treesitter.ensure_installed = { "comment", "markdown_inline", "regex" }
+lvim.lsp.installer.setup.automatic_servers_installation = true
 
 local formatters = require("lvim.lsp.null-ls.formatters")
 formatters.setup({
-	{ command = "stylua" },
+	{ command = "stylua", filetypes = { "lua" } },
 	{
 		command = "prettierd",
 		filetypes = {
