@@ -1,3 +1,4 @@
 require("better_escape").setup({
-	timeout = 300,
+	mapping = { "jk", "jj", "JK", "KJ", "kj" },
+	timeout = 200,
 })

@@ -15,10 +15,12 @@ local themes = {
 	sonokai = "sonokai",
 	edge = "edge",
 	ayu = "ayu",
+	mocha = "catppuccin-mocha",
+	moonfly = "moonfly",
 }
 
 lvim.transparent_window = true
-lvim.colorscheme = themes.lunar
+lvim.colorscheme = "lunar"
 
 local extra_opts = {
 

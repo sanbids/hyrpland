@@ -1,19 +1,20 @@
 #  Font configuration
 font:
   normal:
+    # family: JetBrainsMono Nerd Font
     family: JetBrainsMono Nerd Font
-    #style: Regular
+    style: Regular
 
   bold:
     family: JetBrainsMono Nerd Font
-    #style: Bold
-  
+    style: Bold
+
   italic:
     family: JetBrainsMono Nerd Font
-    #style: Italic
+    style: Italic
 
   bold_italic:
     family: JetBrainsMono Nerd Font
-    #style: Bold Italic
+    style: Bold Italic
 
-  size: 13
+  size: 10

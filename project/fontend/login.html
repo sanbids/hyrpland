@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Login Page</title>
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <link
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <nav class="mainbar">
+      <div class="navbar">
+        <a href="#" class="logo">YourLogo</a>
+        <ul class="nav-links">
+          <li><a href="#">Home</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Contact</a></li>
+          <li><a href="#">Services</a></li>
+        </ul>
+        <a href="#" class="register-btn">Register</a>
+      </div>
+    </nav>
+
+    <div class="main">
+      <div class="form">
+        <h2>Login</h2>
+        <div class="input">
+          <div class="error-message">
+            <p id="error"></p>
+          </div>
+
+          <div class="inputBox">
+            <label for="">Username</label>
+            <input type="text" name="username" id="username" />
+          </div>
+          <div class="inputBox">
+            <label for="">Password</label>
+            <input type="password" name="password" id="password" />
+          </div>
+          <div class="inputBox">
+            <input
+              type="submit"
+              name="submit"
+              value="Sign In"
+              onclick="login()"
+            />
+          </div>
+        </div>
+        <p class="forgot">Forgot Password? <a href="#">Click Here</a></p>
+        <p class="forgot"><a href="#">Register</a></p>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>

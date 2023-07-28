@@ -12,7 +12,7 @@ require("code_runner").setup({
 			"rustc $fileName &&",
 			"$dir/$fileNameWithoutExt",
 		},
-		javascript = "bun $fileName",
+		javascript = "node",
 	},
 	focus = false,
 })

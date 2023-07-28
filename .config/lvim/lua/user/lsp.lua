@@ -29,9 +29,18 @@ formatters.setup({
 
 local linters = require("lvim.lsp.null-ls.linters")
 linters.setup({
+	-- {
+	-- 	command = "efm",
+	-- 	filetypes = { "typescript", "typescriptreact" },
+	-- },
+
+	-- {
+	-- 	command = "eslint",
+	-- 	filetypes = { "javascript" },
+	-- },
 	{
-		command = "eslint_d",
-		filetypes = { "javascript", "typescript", "typescriptreact", "json" },
+		command = "jsonlint",
+		filetypes = { "json" },
 	},
 	{
 		command = "shellcheck",
