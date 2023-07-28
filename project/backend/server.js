@@ -44,13 +44,28 @@ app.post("/login", (req, res) => {
   });
 });
 
+// Define the API endpoint for updating the helpdesk request status
+app.post("/updateHelpdeskRequest", (req, res) => {
+  const { requestId, status } = req.body;
+
+  const sql = "UPDATE helpdesk_requests SET status = ? WHERE id = ?";
+  db.query(sql, [status, requestId], (err, result) => {
+    if (err) {
+      console.error("Error updating the database:", err);
+      res.status(500).json({ error: "Failed to update the request status" });
+    } else {
+      res.json({ message: "Request status updated successfully" });
+    }
+  });
+});
+
 // API endpoint to submit helpdesk requests
 app.post("/submitHelpdeskRequest", (req, res) => {
-  const { name, email, subject, message } = req.body;
+  const { name, email, operating, subject, message } = req.body;
 
   const query =
-    "INSERT INTO helpdesk_requests (name, email, subject, message) VALUES (?, ?, ?, ?)";
-  db.query(query, [name, email, subject, message], (err, result) => {
+    "INSERT INTO helpdesk_requests (name, email,operating, subject, message) VALUES (?, ?,?, ?, ?)";
+  db.query(query, [name, email, operating, subject, message], (err, result) => {
     if (err) {
       console.log(err);
       res.status(500).json({ success: false });

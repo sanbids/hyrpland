@@ -1,20 +1,232 @@
-button {
-  background-color: #007bff;
-  color: #ffffff;
-  padding: 10px;
+@import "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css";
+/* Orbitron Font */
+@import "https://fonts.googleapis.com/css?family=Orbitron:700";
+
+body {
+  background-color: #060c21;
+  color: white;
+}
+/* Bootstrap Classes */
+
+/* General Classes */
+
+.button {
+  background-color: #1e1e2e;
+  color: white;
   border: none;
-  border-radius: 4px;
+}
+.btn-info {
+  background-color: #5bc0de;
+  color: black;
+}
+.bg-tan {
+  background-color: #d2b48c;
+}
+input {
+  background-color: #1e1e;
+}
+.btn-inline {
+  display: inline-block;
+}
+
+.btn-simple {
+  border: 0px;
+}
+
+.btn-xs {
+  font-size: 12px;
+  border-radius: 3px;
+  padding: 1px 5px;
+}
+
+.btn-xs.btn-simple {
+  padding: 3px 5px;
+}
+
+.profile {
+  height: 90px;
+  width: 90px;
+}
+
+/* Dashboard Classes */
+h1.admin {
+  margin-bottom: 20px;
+  padding-bottom: 9px;
+  border-bottom: 1px solid #fff;
+}
+
+.comments img {
+  max-width: 60px;
+}
+
+.posts img {
+  max-width: 140px;
+}
+
+.td-actions {
+  min-width: 110px;
+}
+
+.users img {
+  max-width: 40px;
+}
+
+/* Sidebar Classes */
+.sidebar {
+  position: fixed;
+  background-color: #1e1e2e;
+  top: 12%;
+  bottom: 0;
+  left: 0;
+  z-index: 1000;
+  padding: 20px;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.sidebar {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.sidebar .nav {
+  margin-bottom: 20px;
+}
+
+.sidebar .nav-item {
+  width: 100%;
+}
+
+.sidebar .nav-item + .nav-item {
+  margin-left: 0;
+}
+
+.sidebar .nav-link {
+  border-radius: 0;
+}
+
+.breadcrumb {
+  background-color: #1e1e2e;
+}
+.mainbar {
+  background: #060c21;
+  border-bottom: 0.2px solid #1e1e2e;
+  padding: 10px;
+}
+
+.navbar {
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  padding: 0 20px;
+}
+
+.logo {
+  color: #fff;
+  font-size: 24px;
+  text-decoration: none;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links li {
+  margin: 0 10px;
+}
+
+.nav-links li a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.table {
+  border-width: thin;
+  padding: 10px;
+}
+
+.view-button {
+  padding: 5px 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
   cursor: pointer;
 }
 
-button:hover {
-  background-color: #0056b3;
+.popup {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  align-items: center;
+  justify-content: center;
 }
 
-.card {
-  border: 1px solid #cccccc;
-  border-radius: 4px;
-  padding: 10px;
-  margin-bottom: 10px;
-  background-color: lightblue;
+.popup-content {
+  background-color: #1e1e2e;
+  padding: 20px;
+  width: 35%;
+  height: 50%;
+  border-radius: 5px;
+}
+
+#popup-description {
+  width: 100%;
+  padding: 3px;
+  margin-top: 10px;
+  background-color: lightgrey;
+}
+.close-button {
+  position: relative;
+  padding: 5px 10px;
+  background-color: #ccc;
+  color: #000;
+  cursor: pointer;
+  left: 95%;
+  border: none;
+}
+
+.last-btn {
+  position: relative;
+  display: flex;
+  justify-content: right;
+  top: 7%;
+}
+
+.last-btn button {
+  margin-left: 30px;
+}
+
+.progress {
+  background: orange;
+  border: none;
+}
+
+.solve {
+  background-color: green;
+  border: none;
+}
+
+.progress:hover {
+  opacity: 80%;
+  cursor: pointer;
+}
+
+.solve:hover {
+  opacity: 80%;
+  cursor: pointer;
+}
+
+textarea:focus {
+  outline: none;
+  border: none;
 }

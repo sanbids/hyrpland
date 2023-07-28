@@ -1,33 +1,88 @@
-const div = document.getElementById("result");
+const output = document.querySelector(".addData");
+const progress = document.querySelector(".progress");
+document.addEventListener("DOMContentLoaded", function () {
+  fetchAndDisplayHelpdeskRequests();
+});
+
 async function fetchAndDisplayHelpdeskRequests() {
   await fetch("http://localhost:3000/getHelpdeskRequests") // Replace with your backend API endpoint for fetching helpdesk requests
     .then((response) => response.json())
     .then((data) => {
-      div.innerHTML = "";
-      let arry = data.helpdeskRequests;
+      const arry = data.helpdeskRequests;
       for (let i = 0; i < arry.length; i++) {
-        const card = document.createElement("div");
-        card.classList.add("card");
-        const name = document.createElement("p");
-        name.textContent = `Name: ${arry[i].name}`;
-        const email = document.createElement("p");
-        email.textContent = `Email: ${arry[i].email}`;
-        const subject = document.createElement("p");
-        subject.textContent = `Subject: ${arry[i].subject}`;
-        const message = document.createElement("p");
-        message.textContent = `Message: ${arry[i].message}`;
+        let tr = document.createElement("tr");
+        tr.innerHTML = `
+<td>${arry[i].id}</td>
+<td>${arry[i].name}</td>
+<td>${arry[i].email}</td>
+<td>${arry[i].operating}</td>
+<td>${arry[i].subject}</td>
+<td>${arry[i].status}</td>
+<td>${arry[i].created_at}</td>
+<td>
 
-        card.appendChild(name);
-        card.appendChild(email);
-        card.appendChild(subject);
-        card.appendChild(message);
-        div.appendChild(card);
+  <button
+    class="view-button"
+    onclick="showPopup('Subject: ${escapeHtml(arry[i].subject)}', '${escapeHtml(
+          arry[i].message
+        )}', ${arry[i].id})"
+  >
+    View
+  </button>
+</td>`;
+        output.appendChild(tr);
       }
     });
 }
 
-const button = document.getElementById("adbtn");
-button.addEventListener("click", (e) => {
-  e.preventDefault();
-  fetchAndDisplayHelpdeskRequests();
-});
+function escapeHtml(unsafe) {
+  return unsafe.replace(/[&<"'>]/g, function (match) {
+    switch (match) {
+      case "&":
+        return "&amp;";
+      case "<":
+        return "&lt;";
+      case ">":
+        return "&gt;";
+      case '"':
+        return "&quot;";
+      case "'":
+        return "&#039;";
+    }
+  });
+}
+
+let ids;
+
+function showPopup(title, description, id) {
+  document.getElementById("popup-title").innerText = title;
+  document.getElementById("popup-description").innerText = description;
+  document.getElementById("popup").style.display = "flex";
+  ids = id;
+}
+
+function closePopup() {
+  document.getElementById("popup").style.display = "none";
+}
+
+function updateStatus(status) {
+  const requestId = ids; // The ID of the helpdesk request you want to update
+
+  fetch("http://localhost:3000/updateHelpdeskRequest", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ requestId, status }),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data.message);
+      // You can perform additional actions here based on the response
+    })
+    .catch((error) => {
+      console.error("Error updating the request:", error);
+      // Handle the error, if any
+    });
+  closePopup();
+}

@@ -174,6 +174,8 @@ fi
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+export PATH="/var/lib/snapd/snap/bin:$PATH"
+export SECRET=`php -r 'echo base64_encode(random_bytes(24));'`
 
 # pnpm
 export PNPM_HOME="/home/sanbid/.local/share/pnpm"

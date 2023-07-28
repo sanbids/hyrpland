@@ -5,10 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Helpdesk</title>
     <link rel="stylesheet" href="user_dashboard.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <nav class="mainbar">
-      <div class="navbar">
+      <div id="navbar">
         <a href="#" class="logo">YourLogo</a>
         <ul class="nav-links">
           <li><a href="#">Home</a></li>
@@ -20,71 +26,108 @@
       </div>
     </nav>
 
-    <!-- Create Form -->
-    <form id="form">
-      <div class="heading">
-        <h1>Create Ticket</h1>
-        <button type="button" class="closeBtn" onclick="closeForm()">x</button>
+    <div class="mainForm">
+      <!-- Create Form -->
+      <form id="form">
+        <div class="heading">
+          <h1>Create Ticket</h1>
+          <button type="button" class="closeBtn" onclick="closeForm()">
+            x
+          </button>
+        </div>
+        <div class="name">
+          <label for="name"></label>
+          <input
+            type="text"
+            placeholder="Full Name"
+            name="name"
+            id="name_input"
+            required
+          />
+        </div>
+        <div class="email">
+          <label for="email"></label>
+          <input
+            type="email"
+            placeholder="Email"
+            name="email"
+            id="email_input"
+            required
+          />
+        </div>
+        <div class="operating">
+          <label for="subject"></label>
+          <select
+            placeholder="Your Device"
+            name="operating"
+            id="subject_input"
+            required
+          >
+            <option disabled hidden selected>Operating System</option>
+            <option>linux</option>
+            <option>Window</option>
+            <option>Mac</option>
+            <option>Other</option>
+          </select>
+        </div>
+
+        <div class="subject">
+          <label for="subject"></label>
+          <select
+            placeholder="Your Device"
+            name="subject"
+            id="subject_input"
+            required
+          >
+            <option disabled hidden selected>Subject</option>
+            <option>Network Performace and Speed</option>
+            <option>Internet Connectivity Issues</option>
+            <option>TV Service Problem</option>
+            <option>Data Storage and Backup</option>
+            <option>Account and Billing lnquiries</option>
+            <option>Network Security</option>
+            <option>Customer Portal and Slef-Service Support</option>
+            <option>Remote Access and VPN</option>
+          </select>
+        </div>
+
+        <div class="message">
+          <textarea
+            name="message"
+            placeholder="Description"
+            id="message_input"
+            cols="30"
+            rows="5"
+            required
+          ></textarea>
+        </div>
+        <div class="submit">
+          <input type="submit" value="Send Message" id="form_button" />
+        </div>
+      </form>
+    </div>
+    <table class="ticket-table">
+      <thead>
+        <tr>
+          <th>Checkbox</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Operating System</th>
+          <th>Subject</th>
+          <th>Status</th>
+          <th>View</th>
+        </tr>
+      </thead>
+      <tbody class="added"></tbody>
+    </table>
+
+    <div id="popup" class="popup">
+      <div class="popup-content">
+        <button class="close-button" onclick="closePopup()">X</button>
+        <h2 id="popup-title"></h2>
+        <p id="popup-description"></p>
       </div>
-      <div class="name">
-        <label for="name"></label>
-        <input
-          type="text"
-          placeholder="My name is"
-          name="name"
-          id="name_input"
-          required
-        />
-      </div>
-      <div class="email">
-        <label for="email"></label>
-        <input
-          type="email"
-          placeholder="My e-mail is"
-          name="email"
-          id="email_input"
-          required
-        />
-      </div>
-      <div class="telephone">
-        <label for="name"></label>
-        <input
-          type="text"
-          placeholder="My number is"
-          name="telephone"
-          id="telephone_input"
-          required
-        />
-      </div>
-      <div class="subject">
-        <label for="subject"></label>
-        <select
-          placeholder="Subject line"
-          name="subject"
-          id="subject_input"
-          required
-        >
-          <option disabled hidden selected>Subject line</option>
-          <option>I'd like to start a project</option>
-          <option>I'd like to ask a question</option>
-          <option>I'd like to make a proposal</option>
-        </select>
-      </div>
-      <div class="message">
-        <label for="message"></label>
-        <textarea
-          name="message"
-          placeholder="I'd like to chat about"
-          id="message_input"
-          cols="30"
-          rows="5"
-          required
-        ></textarea>
-      </div>
-      <div class="submit">
-        <input type="submit" value="Send Message" id="form_button" />
-      </div>
-    </form>
+    </div>
 
     <script src="user_dashboard.js"></script>
   </body>
