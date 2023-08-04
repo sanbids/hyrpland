@@ -22,6 +22,7 @@ formatters.setup({
 			"markdown.mdx",
 			"graphql",
 			"handlebars",
+			"python",
 			"json",
 		},
 	},
@@ -47,5 +48,5 @@ linters.setup({
 		args = { "--severity", "warning" },
 		filetypes = { "bash", "zsh" },
 	},
-	-- { command = "flake8", filetypes = { "python" } },
+	-- {--[[  command = "flake8", filetypes = { "python" }  ]]},
 })
