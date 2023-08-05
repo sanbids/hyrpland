@@ -80,6 +80,7 @@ itemsNumber = ct.CTkLabel(checkout_panel,text="3 item in card",font=("JetBrainMo
 itemsNumber.place(x=40,y=80)
 
 #FIX: ##################### items ##################################
+
 itemsFrame = ct.CTkScrollableFrame(checkout_panel,width=525,height=330,fg_color="red")
 itemsFrame.place(x=10,y=130)
 
@@ -127,11 +128,89 @@ def dashBoard_search(parent):
         bg_color="#14162E", fg_color="#499E2C", hover_color="red", command=checkout_panel.animate)
     AddCart_btn.place(x=50, y=60)
     
-radio_var = tk.IntVar(value=0)
 
-def radiobutton_event():
-    print("radiobutton toggled, current value:", radio_var.get())
+product_1_radiobtn1 = tk.IntVar(value=0)
+product1_total = tk.StringVar(value="Total: NPR 0")
 
+product_2_radiobtn2 = tk.IntVar(value=0)
+product2_total = tk.StringVar(value="Total: NPR 0")
+
+product_3_radiobtn3 = tk.IntVar(value=0)
+product3_total = tk.StringVar(value="Total: NPR 0")
+
+product_4_radiobtn4 = tk.IntVar(value=0)
+product4_total = tk.StringVar(value="Total: NPR 0")
+
+
+def radiobutton_event1():
+    if product_1_radiobtn1.get() == 1:
+        product1_total.set("Total: NPR 1000")
+
+    if product_1_radiobtn1.get() == 2:
+        product1_total.set("Total: NPR 2000")
+
+    if product_1_radiobtn1.get() == 3:
+        product1_total.set("Total: NPR 3000")
+    
+def radiobutton_event2():
+    if product_2_radiobtn2.get() == 1:
+        product2_total.set("Total: NPR 500")
+
+    if product_2_radiobtn2.get() == 2:
+        product2_total.set("Total: NPR 1000")
+
+    if product_2_radiobtn2.get() == 3:
+        product2_total.set("Total: NPR 1500")
+
+def radiobutton_event3():
+    if product_3_radiobtn3.get() == 1:
+        product3_total.set("Total: NPR 2000")
+
+    if product_3_radiobtn3.get() == 2:
+        product3_total.set("Total: NPR 4000")
+
+    if product_3_radiobtn3.get() == 3:
+        product3_total.set("Total: NPR 6000")
+
+def radiobutton_event4():
+    if product_4_radiobtn4.get() == 1:
+        product4_total.set("Total: NPR 500")
+
+    if product_4_radiobtn4.get() == 2:
+        product4_total.set("Total: NPR 1000")
+
+    if product_4_radiobtn4.get() == 3:
+        product4_total.set("Total: NPR 1500")
+    
+    if product_4_radiobtn4.get() == 4:
+        product4_total.set("Total: NPR 2000")
+
+def firstProductApply():
+    if product_1_radiobtn1.get() == 0:
+        product1_total.set("Not Selected !!")
+        print("select data")
+    else:
+        print(f"sent to checkout {product1_total.get()}")
+    
+def firstProductApply2():
+    if product_2_radiobtn2.get() == 0:
+        product2_total.set("Not Selected !!")
+        print("select data")
+    else:
+        print(f"sent to checkout {product2_total.get()}")
+def firstProductApply3():
+    if product_3_radiobtn3.get() == 0:
+        product3_total.set("Not Selected !!")
+        print("select data")
+    else:
+        print(f"sent to checkout {product3_total.get()}")
+
+def firstProductApply4():
+    if product_4_radiobtn4.get() == 0:
+        product4_total.set("Not Selected !!")
+        print("select data")
+    else:
+        print(f"sent to checkout {product4_total.get()}")
 def dashboard_product(parent):
     product_frame = ct.CTkFrame(parent,width=1527,height=420,fg_color=backgrounColor)
     product_frame.place(x=0,y=109)
@@ -158,17 +237,19 @@ def dashboard_product(parent):
     procduct1_label_para.place(x=360,y=100)
 
 
-    radiobutton_1 = ct.CTkRadioButton(productFrame, text="Beginner ( 2 sessions )",command=radiobutton_event, variable= radio_var, value=1,font=("JetBrainMono",18),text_color="white")
+    radiobutton_1 = ct.CTkRadioButton(productFrame, variable=product_1_radiobtn1,text="Beginner ( 2 sessions )",command=radiobutton_event1, value=1,font=("JetBrainMono",18),text_color="white")
     radiobutton_1.place(x=360,y=150)
-    radiobutton_2 = ct.CTkRadioButton(productFrame, text="Intermediate ( 3 sessions )",command=radiobutton_event, variable= radio_var, value=2,font=("JetBrainMono",18),text_color="white")
+    radiobutton_2 = ct.CTkRadioButton(productFrame, variable=product_1_radiobtn1, text="Intermediate ( 3 sessions )",command=radiobutton_event1, value=2,font=("JetBrainMono",18),text_color="white")
     radiobutton_2.place(x=360,y=200)
-    radiobutton_3 = ct.CTkRadioButton(productFrame, text="Elite ( more then 5 sessions )",command=radiobutton_event, variable= radio_var, value=3,font=("JetBrainMono",18),text_color="white")
+    radiobutton_3 = ct.CTkRadioButton(productFrame,variable=product_1_radiobtn1, text="Elite ( more then 5 sessions )",command=radiobutton_event1, value=3,font=("JetBrainMono",18),text_color="white")
     radiobutton_3.place(x=360,y=250)
+    
 
-    Total_price = ct.CTkLabel(productFrame,text="Total: NPR 3000",font=("JetBrainMono",20))
+
+    Total_price = ct.CTkLabel(productFrame,text="",font=("JetBrainMono",20),textvariable=product1_total)
     Total_price.place(x=355,y=300)
 
-    procduct1_btn_apply = ct.CTkButton(productFrame,text="Apply",command=lambda: print("product 1 apply"),height=40,font=("JetBrainMono",19))
+    procduct1_btn_apply = ct.CTkButton(productFrame,text="Apply",command=firstProductApply,height=40,font=("JetBrainMono",19))
     procduct1_btn_apply.place(x=530,y=293)
 
     
@@ -187,17 +268,17 @@ def dashboard_product(parent):
     procduct2_label_para.place(x=390,y=100)
 
 
-    radiobutton_1_2 = ct.CTkRadioButton(productFrame2, text="1 hour",command=radiobutton_event, variable= radio_var, value=1,font=("JetBrainMono",18),text_color="white")
+    radiobutton_1_2 = ct.CTkRadioButton(productFrame2, text="1 hour",command=radiobutton_event2, variable= product_2_radiobtn2, value=1,font=("JetBrainMono",18),text_color="white")
     radiobutton_1_2.place(x=390,y=150)
-    radiobutton_2_2 = ct.CTkRadioButton(productFrame2, text="2 hour",command=radiobutton_event, variable= radio_var, value=2,font=("JetBrainMono",18),text_color="white")
+    radiobutton_2_2 = ct.CTkRadioButton(productFrame2, text="2 hour",command=radiobutton_event2, variable= product_2_radiobtn2, value=2,font=("JetBrainMono",18),text_color="white")
     radiobutton_2_2.place(x=390,y=200)
-    radiobutton_3_2 = ct.CTkRadioButton(productFrame2, text="3 hour",command=radiobutton_event, variable= radio_var, value=3,font=("JetBrainMono",18),text_color="white")
+    radiobutton_3_2 = ct.CTkRadioButton(productFrame2, text="3 hour",command=radiobutton_event2, variable= product_2_radiobtn2, value=3,font=("JetBrainMono",18),text_color="white")
     radiobutton_3_2.place(x=390,y=250)
 
-    Total_price2 = ct.CTkLabel(productFrame2,text="Total: NPR 500",font=("JetBrainMono",20))
+    Total_price2 = ct.CTkLabel(productFrame2,text="Total: NPR 0",font=("JetBrainMono",20),textvariable=product2_total)
     Total_price2.place(x=370,y=300)
 
-    procduct1_btn_apply_2 = ct.CTkButton(productFrame2,text="Apply",command=lambda: print("product 1 apply"),height=40,font=("JetBrainMono",19))
+    procduct1_btn_apply_2 = ct.CTkButton(productFrame2,text="Apply",command=firstProductApply2,height=40,font=("JetBrainMono",19))
     procduct1_btn_apply_2.place(x=530,y=293)
 
 
@@ -216,17 +297,17 @@ def dashboard_product(parent):
     procduct3_label_para.place(x=565,y=100)
 
 
-    radiobutton_1_3 = ct.CTkRadioButton(productFrame_tab2, text="4 Sessions",command=radiobutton_event, variable= radio_var, value=1,font=("JetBrainMono",18),text_color="white")
+    radiobutton_1_3 = ct.CTkRadioButton(productFrame_tab2, text="4 Sessions",command=radiobutton_event3, variable= product_3_radiobtn3, value=1,font=("JetBrainMono",18),text_color="white")
     radiobutton_1_3.place(x=565,y=150)
-    radiobutton_2_3 = ct.CTkRadioButton(productFrame_tab2, text="8 Sessions",command=radiobutton_event, variable= radio_var, value=2,font=("JetBrainMono",18),text_color="white")
+    radiobutton_2_3 = ct.CTkRadioButton(productFrame_tab2, text="8 Sessions",command=radiobutton_event3, variable= product_3_radiobtn3, value=2,font=("JetBrainMono",18),text_color="white")
     radiobutton_2_3.place(x=565,y=200)
-    radiobutton_3_3 = ct.CTkRadioButton(productFrame_tab2, text="12 Sessions",command=radiobutton_event, variable= radio_var, value=3,font=("JetBrainMono",18),text_color="white")
+    radiobutton_3_3 = ct.CTkRadioButton(productFrame_tab2, text="12 Sessions",command=radiobutton_event3, variable= product_3_radiobtn3, value=3,font=("JetBrainMono",18),text_color="white")
     radiobutton_3_3.place(x=565,y=250)
 
-    Total_price3 = ct.CTkLabel(productFrame_tab2,text="Total: NPR 2000",font=("JetBrainMono",20))
+    Total_price3 = ct.CTkLabel(productFrame_tab2,text="Total: NPR 0",font=("JetBrainMono",20),textvariable=product3_total) 
     Total_price3.place(x=560,y=300)
 
-    procduct1_btn_apply_3 = ct.CTkButton(productFrame_tab2,text="Apply",command=lambda: print("product 1 apply"),height=40,font=("JetBrainMono",19))
+    procduct1_btn_apply_3 = ct.CTkButton(productFrame_tab2,text="Apply",command=firstProductApply3,height=40,font=("JetBrainMono",19))
     procduct1_btn_apply_3.place(x=780,y=293)
 
 
@@ -245,20 +326,20 @@ def dashboard_product(parent):
     procduct4_label_para.place(x=465,y=50)
 
 
-    radiobutton_1_4 = ct.CTkRadioButton(productFrame_tab3, text="1 Sessions",command=radiobutton_event, variable= radio_var, value=1,font=("JetBrainMono",18),text_color="white")
+    radiobutton_1_4 = ct.CTkRadioButton(productFrame_tab3, text="1 Sessions",command=radiobutton_event4, variable= product_4_radiobtn4, value=1,font=("JetBrainMono",18),text_color="white")
     radiobutton_1_4.place(x=465,y=100)
-    radiobutton_2_4 = ct.CTkRadioButton(productFrame_tab3, text="2 Sessions",command=radiobutton_event, variable= radio_var, value=2,font=("JetBrainMono",18),text_color="white")
+    radiobutton_2_4 = ct.CTkRadioButton(productFrame_tab3, text="2 Sessions",command=radiobutton_event4, variable= product_4_radiobtn4, value=2,font=("JetBrainMono",18),text_color="white")
     radiobutton_2_4.place(x=465,y=150)
-    radiobutton_3_4 = ct.CTkRadioButton(productFrame_tab3, text="3 Sessions",command=radiobutton_event, variable= radio_var, value=3,font=("JetBrainMono",18),text_color="white")
+    radiobutton_3_4 = ct.CTkRadioButton(productFrame_tab3, text="3 Sessions",command=radiobutton_event4, variable= product_4_radiobtn4, value=3,font=("JetBrainMono",18),text_color="white")
     radiobutton_3_4.place(x=465,y=200)
-    radiobutton_4_4 = ct.CTkRadioButton(productFrame_tab3, text="4 Sessions",command=radiobutton_event, variable= radio_var, value=3,font=("JetBrainMono",18),text_color="white")
+    radiobutton_4_4 = ct.CTkRadioButton(productFrame_tab3, text="4 Sessions",command=radiobutton_event4, variable= product_4_radiobtn4, value=4,font=("JetBrainMono",18),text_color="white")
     radiobutton_4_4.place(x=465,y=250)
 
 
-    Total_price4 = ct.CTkLabel(productFrame_tab3,text="Total: NPR 500",font=("JetBrainMono",20))
+    Total_price4 = ct.CTkLabel(productFrame_tab3,text="Total: NPR 500",font=("JetBrainMono",20),textvariable=product4_total)
     Total_price4.place(x=460,y=300)
 
-    procduct1_btn_apply_4 = ct.CTkButton(productFrame_tab3,text="Apply",command=lambda: print("product 1 apply"),height=40,font=("JetBrainMono",19))
+    procduct1_btn_apply_4 = ct.CTkButton(productFrame_tab3,text="Apply",command=firstProductApply4,height=40,font=("JetBrainMono",19))
     procduct1_btn_apply_4.place(x=680,y=293)
 
 
