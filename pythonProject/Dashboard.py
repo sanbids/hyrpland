@@ -1,7 +1,9 @@
+
 import tkinter as tk
 import customtkinter as ct
 from PIL import Image
-import ttkbootstrap as ttk
+
+
 
 ct.set_appearance_mode("dark")
 window = tk.Tk()
@@ -15,20 +17,25 @@ main_frame.place(x=272,y=98)
 
 ######################################### -> Top Frame <- ######################################################################
 
-header_frame = ct.CTkFrame(window,width=1800,height=100,fg_color=backgrounColor)
-header_frame.place(x=0,y=0)
+def header(parent):
+    header_frame = ct.CTkFrame(parent, width=1800, height=100, fg_color=backgrounColor)
+    header_frame.place(x=0, y=0)
+    
+    company_name_label = ct.CTkLabel(header_frame, font=("RalewayRoman Bold", 24), text_color="#49B9C0", text="BEST FITNESS")
+    company_name_label.place(x=43.0, y=40)
+    company_address = ct.CTkLabel(header_frame, font=("RalewayRoman Bold", 12), text_color="#FFFFFF", text="(hattiban, lalitpur)")
+    company_address.place(x=60.0, y=70)
 
-companyName_lebal = ct.CTkLabel(header_frame,font=("RalewayRoman Bold",24),text_color="#49B9C0",text="BEST FITNESS")
-companyName_lebal.place(x=43.0,y=40)
+    def user_button_clicked():
+        print("User button clicked")
 
-companyAddress = ct.CTkLabel(header_frame,font=("RalewayRoman Bold",12),text_color="#FFFFFF",text="( hattiban,lalitpur)")
-companyAddress.place(x=60.0,y=70)
-
-UserButton = ct.CTkButton(
+    user_button = ct.CTkButton(
         header_frame, corner_radius=13, text="     Sanbid", width=150, height=50, font=("JetBrainMono", 17),
-        bg_color="#14162E", fg_color="#363E52", hover_color="#2F3749", command=lambda: print("user"))
-UserButton.place(x=1575, y=40)
-
+        bg_color="#14162E", fg_color="#363E52", hover_color="#2F3749", command=user_button_clicked
+    )
+    user_button.place(x=1575, y=40)
+    
+header(window)
 #################################################################################################################################
 
 
@@ -66,52 +73,83 @@ class SlidePanel(ct.CTkFrame):
 			self.in_start_pos = True
 
 
-#### checkout panel frame #################
+#### checkout panel Items List frame #################
 
-checkout_panel = SlidePanel(window, 1.0, 0.7)
-checkout_panel.configure(fg_color="#212121")
+def ItemsList(parent):
+    itemsFrame = ct.CTkScrollableFrame(parent, width=525, height=330, fg_color="red")
+    itemsFrame.grid(row=1, column=0)
 
-closebtn = ct.CTkButton(checkout_panel,text=" X ",width=30,height=30,text_color="white",fg_color="black",hover_color="red",command=lambda: checkout_panel.animate_backwards())
-closebtn.place(x=490,y=30)
-order_heading = ct.CTkLabel(checkout_panel,text="Order Review",font=("JetBrainMono",25),text_color="#FFFFFF")
-order_heading.place(x=40,y=50)
+    product_frame_info = [
+    ("Product A", 520, 100, "purple"),
+    ("Product B", 520, 100, "purple"),
+    ("Product C", 520, 100, "purple"),
+    ("Product D", 520, 100, "purple"),
+    ("Product E", 520, 100, "purple"),
+    ("Product E", 520, 100, "green"),
+    ]
+
+    for row, (product_name, width, height, fg_color) in enumerate(product_frame_info):
+        products_items = ct.CTkFrame(itemsFrame, width=width, height=height, fg_color=fg_color)
+        products_items.grid(row=row * 2, column=0, pady=10)
+
+        product_name_label = ct.CTkLabel(products_items, text=product_name, font=("JetBrainMono", 18), text_color="white")
+        product_name_label.place(x=10, y=10)
     
-itemsNumber = ct.CTkLabel(checkout_panel,text="3 item in card",font=("JetBrainMono",18),text_color="#FFFFFF")
-itemsNumber.place(x=40,y=80)
 
-#FIX: ##################### items ##################################
+##################### bill selection ##########################
+def create_billing_section(parent_frame, x, y):
+    billing_frame = ct.CTkFrame(parent_frame, width=525, height=270, fg_color="yellow")
+    billing_frame.place(x=x, y=y)
 
-itemsFrame = ct.CTkScrollableFrame(checkout_panel,width=525,height=330,fg_color="red")
-itemsFrame.place(x=10,y=130)
+    heading_bill = ct.CTkLabel(billing_frame, text="Billing Summary", font=("JetBrainMono", 23, "bold"), text_color="black")
+    heading_bill.place(x=10, y=10)
 
-###########################################################
+    billing_info = [
+        ("Subtotal:", "NRP 3000", 60),
+        ("Discount:", "NRP -200", 100),
+        ("Grand Total:", "NRP 2800", 143),
+    ]
 
-discount_label = ct.CTkLabel(checkout_panel,text="Discount Codes",font=("JetBrainMono",24,"bold"),text_color="white")
-discount_label.place(x=40,y=470)
+    for row, (label_text, value_text, y_offset) in enumerate(billing_info):
+        label = ct.CTkLabel(billing_frame, text=label_text, font=("JetBrainMono", 18), text_color="black")
+        label.place(x=10, y=y_offset)
 
-discount_input = ct.CTkEntry(checkout_panel,placeholder_text="Discount code ....",width=350,height=40,border_width=0)
-discount_input.place(x=40,y=510)
+        value_label = ct.CTkLabel(billing_frame, text=value_text, font=("JetBrainMono", 18), text_color="black")
+        value_label.place(x=160, y=y_offset)
 
-billingFrame = ct.CTkFrame(checkout_panel,width=525,height=270,fg_color="yellow")
-billingFrame.place(x=10,y=560)
+    comment = ct.CTkTextbox(billing_frame, width=500, height=100, font=("JetBrainMono", 16), text_color="white")
+    payButton = ct.CTkButton(parent_frame,text="Pay NRP 5000.00",font=("JetBrainMono",20,"bold"),width=210,height=50,text_color="white")
+    payButton.place(x=180,y=840)
+    comment.place(x=10, y=150)
+    
+def checkoutFrame():
+    ########## side panel ##################
+    checkout_panel = SlidePanel(window, 1.0, 0.7)
+    checkout_panel.configure(fg_color="#212121")
 
-heading_bill = ct.CTkLabel(billingFrame,text="Billing Summary",font=("JetBrainMono",23,"bold"),text_color="black")
-heading_bill.place(x=10,y=10)
+    ############# close button for side panel ###############
+    closebtn = ct.CTkButton(checkout_panel,text=" X ",width=30,height=30,text_color="white",fg_color="black",hover_color="red",command=lambda: checkout_panel.animate_backwards())
+    closebtn.place(x=490,y=30)
 
-subtotal = ct.CTkLabel(billingFrame,text="Subtotal:\t\t\t\t\t NRP 3000",font=("JetBrainMono",18),text_color="black")
-subtotal.place(x=10,y=60)
+    ######### heading/sub-heading of checkout ###############
+    order_heading = ct.CTkLabel(checkout_panel,text="Order Review",font=("JetBrainMono",25),text_color="#FFFFFF")
+    order_heading.place(x=40,y=50)
+    itemsNumber = ct.CTkLabel(checkout_panel,text="3 item in card",font=("JetBrainMono",18),text_color="#FFFFFF")
+    itemsNumber.place(x=40,y=80)
 
-discount_bill = ct.CTkLabel(billingFrame,text="Discount:\t\t\t\t NRP -200",font=("JetBrainMono",18),text_color="black")
-discount_bill.place(x=10,y=100)
+    checkout_panel.columnconfigure(0,weight=1)
+    row_weights = [1, 1, 1, 1, 3]
+    for row, weight in enumerate(row_weights):
+        checkout_panel.rowconfigure(row, weight=weight)
+        
+    ItemsList(checkout_panel)
+    discount_label = ct.CTkLabel(checkout_panel,text="Discount Codes",font=("JetBrainMono",24,"bold"),text_color="white")
+    discount_label.place(x=40,y=470)
+    discount_input = ct.CTkEntry(checkout_panel,placeholder_text="Discount code ....",width=350,height=40,border_width=0)
+    discount_input.place(x=40,y=510)
+    create_billing_section(checkout_panel,x=10,y=560)
+    return checkout_panel 
 
-grand_total = ct.CTkLabel(billingFrame,text="Grand Total:\t\t\t NRP 2800",font=("JetBrainMono",21,"bold"),text_color="black")
-grand_total.place(x=10,y=143)
-
-comment = ct.CTkTextbox(billingFrame,width=500,height=100,font=("JetBrainMono",16),text_color="white")
-comment.place(x=10,y=150)
-
-payButton = ct.CTkButton(checkout_panel,text="Pay NRP 5000.00",font=("JetBrainMono",20,"bold"),width=210,height=50,text_color="white")
-payButton.place(x=180,y=840)
 ######################################### -> SIDE MENU PART <- ###################################################################
 
 side_menu_frame = ct.CTkFrame(window,width=276,height=900,fg_color=backgrounColor)
@@ -125,225 +163,106 @@ def dashBoard_search(parent):
     entry1.place(x=495,y=50)
     AddCart_btn = ct.CTkButton(
         sarchAndCart_Frame, corner_radius=13, text="Checkout", width=150, height=60, font=("JetBrainMono", 17),
-        bg_color="#14162E", fg_color="#499E2C", hover_color="red", command=checkout_panel.animate)
+        bg_color="#14162E", fg_color="#499E2C", hover_color="red", command=checkoutFrame().animate)
     AddCart_btn.place(x=50, y=60)
-    
-
-product_1_radiobtn1 = tk.IntVar(value=0)
-product1_total = tk.StringVar(value="Total: NPR 0")
-
-product_2_radiobtn2 = tk.IntVar(value=0)
-product2_total = tk.StringVar(value="Total: NPR 0")
-
-product_3_radiobtn3 = tk.IntVar(value=0)
-product3_total = tk.StringVar(value="Total: NPR 0")
-
-product_4_radiobtn4 = tk.IntVar(value=0)
-product4_total = tk.StringVar(value="Total: NPR 0")
 
 
-def radiobutton_event1():
-    if product_1_radiobtn1.get() == 1:
-        product1_total.set("Total: NPR 1000")
+def radiobutton_event(var, total_var, values, prices):
+    index = var.get() - 1
+    if 0 <= index < len(values):
+        total_var.set(f"Total: NPR {prices[index]}")
 
-    if product_1_radiobtn1.get() == 2:
-        product1_total.set("Total: NPR 2000")
-
-    if product_1_radiobtn1.get() == 3:
-        product1_total.set("Total: NPR 3000")
-    
-def radiobutton_event2():
-    if product_2_radiobtn2.get() == 1:
-        product2_total.set("Total: NPR 500")
-
-    if product_2_radiobtn2.get() == 2:
-        product2_total.set("Total: NPR 1000")
-
-    if product_2_radiobtn2.get() == 3:
-        product2_total.set("Total: NPR 1500")
-
-def radiobutton_event3():
-    if product_3_radiobtn3.get() == 1:
-        product3_total.set("Total: NPR 2000")
-
-    if product_3_radiobtn3.get() == 2:
-        product3_total.set("Total: NPR 4000")
-
-    if product_3_radiobtn3.get() == 3:
-        product3_total.set("Total: NPR 6000")
-
-def radiobutton_event4():
-    if product_4_radiobtn4.get() == 1:
-        product4_total.set("Total: NPR 500")
-
-    if product_4_radiobtn4.get() == 2:
-        product4_total.set("Total: NPR 1000")
-
-    if product_4_radiobtn4.get() == 3:
-        product4_total.set("Total: NPR 1500")
-    
-    if product_4_radiobtn4.get() == 4:
-        product4_total.set("Total: NPR 2000")
-
-def firstProductApply():
-    if product_1_radiobtn1.get() == 0:
-        product1_total.set("Not Selected !!")
+def apply_product(product_name, var, total_var):
+    if var.get() == 0:
+        total_var.set("Not Selected !!")
         print("select data")
     else:
-        print(f"sent to checkout {product1_total.get()}")
+        print(f"sent to checkout {total_var.get()}")
+
+def create_product_tab(tab, image,product_name,time, values, prices,x,y,imagex,imagey,size,headx,heady,parax,paray,radiox,raidoy,totalx,totaly,subx,suby):
+    product_frame = ct.CTkFrame(tab, width=850, height=378, fg_color="green")
+    product_frame.place(x=x, y=y)
+
+    product_image = ct.CTkImage(light_image=Image.open(image), size=size)
+    product_label = ct.CTkLabel(product_frame, image=product_image, text="", fg_color="#2C3546", width=360)
+    product_label.place(x=imagex, y=imagey)
+
+    heading = ct.CTkLabel(product_frame, text=product_name.upper(), font=("JetBrainMono", 32, 'bold'), text_color="#fff")
+    heading.place(x=headx, y=heady)
+
+    label_para = ct.CTkLabel(product_frame, text=time, font=("JetBrainMono", 22),
+                          text_color="#fff")
+    label_para.place(x=parax, y=paray)
+
+    var = tk.IntVar(value=0)
+    total_var = tk.StringVar(value="Total: NPR 0")
+
+    radiobuttons = []
+    for i, value in enumerate(values):
+        radiobutton = ct.CTkRadioButton(product_frame, variable=var, text=value, value=i + 1, font=("JetBrainMono",18),
+                                     command=lambda: radiobutton_event(var, total_var, values, prices))
+        radiobutton.place(x=radiox, y=raidoy + i * 50)
+        radiobuttons.append(radiobutton)
+
+    total_label = ct.CTkLabel(product_frame, text="", font=("JetBrainMono", 20), textvariable=total_var)
+    total_label.place(x=totalx, y=totaly)
+
+    apply_button = ct.CTkButton(product_frame, text="Apply",
+                             command=lambda: apply_product(product_name, var, total_var), height=40,
+                             font=("JetBrainMono", 19))
+    apply_button.place(x=subx, y=suby)
+
+
+def create_body(parent):
+    dashboard_frame = ct.CTkFrame(parent, width=1568, height=911, fg_color=backgrounColor)
+    dashboard_frame.place(x=0, y=110)
     
-def firstProductApply2():
-    if product_2_radiobtn2.get() == 0:
-        product2_total.set("Not Selected !!")
-        print("select data")
-    else:
-        print(f"sent to checkout {product2_total.get()}")
-def firstProductApply3():
-    if product_3_radiobtn3.get() == 0:
-        product3_total.set("Not Selected !!")
-        print("select data")
-    else:
-        print(f"sent to checkout {product3_total.get()}")
+    notebook = ct.CTkTabview(dashboard_frame, width=1510, height=410, fg_color=backgrounColor,segmented_button_fg_color=backgrounColor, text_color="black")
+    notebook.place(x=5, y=15)
 
-def firstProductApply4():
-    if product_4_radiobtn4.get() == 0:
-        product4_total.set("Not Selected !!")
-        print("select data")
-    else:
-        print(f"sent to checkout {product4_total.get()}")
-def dashboard_product(parent):
-    product_frame = ct.CTkFrame(parent,width=1527,height=420,fg_color=backgrounColor)
-    product_frame.place(x=0,y=109)
-
-    #### tab #####
-    notebook = ct.CTkTabview(product_frame,width=1510,height=410,fg_color=backgrounColor,segmented_button_fg_color=backgrounColor,text_color="black")
-    notebook.place(x=5,y=15)
-
-    ### making tab #####
     tab1 = notebook.add("Gym course and Private trainer")
-    tab2 = notebook.add("Swimming session")
-    tab3 = notebook.add("sunana session")
+    tab2 = notebook.add("Swimming Session")
+    tab3 = notebook.add("Sunana Session")
 
-    productFrame = ct.CTkFrame(tab1,width=700,height=378,fg_color="#2E374B",corner_radius=10)
-    productFrame.place(x=30,y=5)
+    products = [
+        (tab1, 
+         "./assets/frame0/firstorder.png",
+         "GYM COURSE",
+         "Select Your Course (Weekly)", 
+         ["Beginner ( 2 sessions )", "Intermediate ( 3 sessions )","Elite ( more than 5 sessions )"],
+         [1000, 2000, 3000],30,5,-20,-90,(310,500),420,30,360,100,360,150,355,300,530,293),
+        
+        (tab1,"./assets/frame0/co.png", "Private trainer","Select Hour ( per day)", ["1 hour", "2 hours", "3 hours"], [500, 1000, 1500],740,5,0,0,(300,350),420,30,390,100,390,150,380,300,600,293),
+        (tab2,"./assets/frame0/swimming.png","swimming","Select Sessions ( Monthly )", ["4 Sessions", "8 Sessions", "12 Sessions"], [2000, 4000, 6000],300,5,0,0,(430,350),530,30,480,100,490,150,460,300,680,293),
+        (tab3,"./assets/frame0/suna.png", "suna","Select Sessions (Monthly)", ["1 Session", "2 Sessions", "3 Sessions", "4 Sessions"], [1500, 3000, 4500, 6000],300,5,0,0,(400,400),520,5,465,50,465,100,460,300,680,293)
+    ]
 
-    product1_image = ct.CTkImage(light_image=Image.open("./assets/frame0/firstorder.png"),size=(310,500)) 
-    procduct1_label = ct.CTkLabel(productFrame,image=product1_image,text="",fg_color="#2C3546",width=360)
-    procduct1_label.place(x=-20,y=-90)
-    product1_heading = ct.CTkLabel(productFrame,text="GYM COURSE",font=("JetBrainMono",32,'bold'),text_color="#fff")
-    product1_heading.place(x=420,y=30)
-
-    procduct1_label_para = ct.CTkLabel(productFrame,text="Select Your Course ( Weekly ) ",font=("JetBrainMono",22),text_color="#fff")
-    procduct1_label_para.place(x=360,y=100)
+    for tab,image,product_name,time,value,price,x,y,imagex,imagey,size,headx,heady,parax,paray,radiox,radioy,totalx,totaly,subx,suby in products:
+        create_product_tab(tab,image,product_name,time,value,price,x,y,imagex,imagey,size,headx,heady,parax,paray,radiox,radioy,totalx,totaly,subx,suby)
 
 
-    radiobutton_1 = ct.CTkRadioButton(productFrame, variable=product_1_radiobtn1,text="Beginner ( 2 sessions )",command=radiobutton_event1, value=1,font=("JetBrainMono",18),text_color="white")
-    radiobutton_1.place(x=360,y=150)
-    radiobutton_2 = ct.CTkRadioButton(productFrame, variable=product_1_radiobtn1, text="Intermediate ( 3 sessions )",command=radiobutton_event1, value=2,font=("JetBrainMono",18),text_color="white")
-    radiobutton_2.place(x=360,y=200)
-    radiobutton_3 = ct.CTkRadioButton(productFrame,variable=product_1_radiobtn1, text="Elite ( more then 5 sessions )",command=radiobutton_event1, value=3,font=("JetBrainMono",18),text_color="white")
-    radiobutton_3.place(x=360,y=250)
+def dashboardPage():
+    dashbaordframe = ct.CTkFrame(main_frame,width=1568,height=911,fg_color="black")
+    dashbaordframe.place(x=0,y=0)
+    dashBoard_search(dashbaordframe)
+    create_body(dashbaordframe)
+    dashBoard_foot(dashbaordframe)
     
 
 
-    Total_price = ct.CTkLabel(productFrame,text="",font=("JetBrainMono",20),textvariable=product1_total)
-    Total_price.place(x=355,y=300)
 
-    procduct1_btn_apply = ct.CTkButton(productFrame,text="Apply",command=firstProductApply,height=40,font=("JetBrainMono",19))
-    procduct1_btn_apply.place(x=530,y=293)
+
+
+
+
+
+
+
+
+
+
 
     
-
-    productFrame2 = ct.CTkFrame(tab1,width=700,height=378,fg_color="#2E374B")
-    productFrame2.place(x=740,y=5)
-
-    product1_image2 = ct.CTkImage(light_image=Image.open("./assets/frame0/co.png"),size=(300,300)) 
-    procduct1_label2 = ct.CTkLabel(productFrame2,image=product1_image2,text="",fg_color="#2C3546",height=380,width=345)
-    procduct1_label2.place(x=0,y=0)
-
-    product2_heading = ct.CTkLabel(productFrame2,text="Private Trainer",font=("JetBrainMono",32,'bold'),text_color="#fff")
-    product2_heading.place(x=420,y=30)
-
-    procduct2_label_para = ct.CTkLabel(productFrame2,text="Select Hour",font=("JetBrainMono",22),text_color="#fff")
-    procduct2_label_para.place(x=390,y=100)
-
-
-    radiobutton_1_2 = ct.CTkRadioButton(productFrame2, text="1 hour",command=radiobutton_event2, variable= product_2_radiobtn2, value=1,font=("JetBrainMono",18),text_color="white")
-    radiobutton_1_2.place(x=390,y=150)
-    radiobutton_2_2 = ct.CTkRadioButton(productFrame2, text="2 hour",command=radiobutton_event2, variable= product_2_radiobtn2, value=2,font=("JetBrainMono",18),text_color="white")
-    radiobutton_2_2.place(x=390,y=200)
-    radiobutton_3_2 = ct.CTkRadioButton(productFrame2, text="3 hour",command=radiobutton_event2, variable= product_2_radiobtn2, value=3,font=("JetBrainMono",18),text_color="white")
-    radiobutton_3_2.place(x=390,y=250)
-
-    Total_price2 = ct.CTkLabel(productFrame2,text="Total: NPR 0",font=("JetBrainMono",20),textvariable=product2_total)
-    Total_price2.place(x=370,y=300)
-
-    procduct1_btn_apply_2 = ct.CTkButton(productFrame2,text="Apply",command=firstProductApply2,height=40,font=("JetBrainMono",19))
-    procduct1_btn_apply_2.place(x=530,y=293)
-
-
-
-    productFrame_tab2 = ct.CTkFrame(tab2,width=970,height=378,fg_color="#2E374B")
-    productFrame_tab2.place(x=300,y=5)
-
-    product1_image2 = ct.CTkImage(light_image=Image.open("./assets/frame0/swimming.png"),size=(500,300)) 
-    procduct1_label2 = ct.CTkLabel(productFrame_tab2,image=product1_image2,text="",fg_color="#2C3546",width=520,height=380)
-    procduct1_label2.place(x=0,y=0)
-
-    product3_heading = ct.CTkLabel(productFrame_tab2,text="Swimming",font=("JetBrainMono",32,'bold'),text_color="#fff")
-    product3_heading.place(x=600,y=30)
-
-    procduct3_label_para = ct.CTkLabel(productFrame_tab2,text="Select Sessions",font=("JetBrainMono",22),text_color="#fff")
-    procduct3_label_para.place(x=565,y=100)
-
-
-    radiobutton_1_3 = ct.CTkRadioButton(productFrame_tab2, text="4 Sessions",command=radiobutton_event3, variable= product_3_radiobtn3, value=1,font=("JetBrainMono",18),text_color="white")
-    radiobutton_1_3.place(x=565,y=150)
-    radiobutton_2_3 = ct.CTkRadioButton(productFrame_tab2, text="8 Sessions",command=radiobutton_event3, variable= product_3_radiobtn3, value=2,font=("JetBrainMono",18),text_color="white")
-    radiobutton_2_3.place(x=565,y=200)
-    radiobutton_3_3 = ct.CTkRadioButton(productFrame_tab2, text="12 Sessions",command=radiobutton_event3, variable= product_3_radiobtn3, value=3,font=("JetBrainMono",18),text_color="white")
-    radiobutton_3_3.place(x=565,y=250)
-
-    Total_price3 = ct.CTkLabel(productFrame_tab2,text="Total: NPR 0",font=("JetBrainMono",20),textvariable=product3_total) 
-    Total_price3.place(x=560,y=300)
-
-    procduct1_btn_apply_3 = ct.CTkButton(productFrame_tab2,text="Apply",command=firstProductApply3,height=40,font=("JetBrainMono",19))
-    procduct1_btn_apply_3.place(x=780,y=293)
-
-
-
-    productFrame_tab3 = ct.CTkFrame(tab3,width=850,height=378,fg_color="#2E374B")
-    productFrame_tab3.place(x=300,y=5)
-
-    product1_image3 = ct.CTkImage(light_image=Image.open("./assets/frame0/suna.png"),size=(400,400)) 
-    procduct1_label3 = ct.CTkLabel(productFrame_tab3,image=product1_image3,text="",width=410,height=410,fg_color="#2C3546")
-    procduct1_label3.place(x=0,y=0)
-    
-    product4_heading = ct.CTkLabel(productFrame_tab3,text="Sauna",font=("JetBrainMono",32,'bold'),text_color="#fff")
-    product4_heading.place(x=520,y=5)
-
-    procduct4_label_para = ct.CTkLabel(productFrame_tab3,text="Select Sessions",font=("JetBrainMono",22),text_color="#fff")
-    procduct4_label_para.place(x=465,y=50)
-
-
-    radiobutton_1_4 = ct.CTkRadioButton(productFrame_tab3, text="1 Sessions",command=radiobutton_event4, variable= product_4_radiobtn4, value=1,font=("JetBrainMono",18),text_color="white")
-    radiobutton_1_4.place(x=465,y=100)
-    radiobutton_2_4 = ct.CTkRadioButton(productFrame_tab3, text="2 Sessions",command=radiobutton_event4, variable= product_4_radiobtn4, value=2,font=("JetBrainMono",18),text_color="white")
-    radiobutton_2_4.place(x=465,y=150)
-    radiobutton_3_4 = ct.CTkRadioButton(productFrame_tab3, text="3 Sessions",command=radiobutton_event4, variable= product_4_radiobtn4, value=3,font=("JetBrainMono",18),text_color="white")
-    radiobutton_3_4.place(x=465,y=200)
-    radiobutton_4_4 = ct.CTkRadioButton(productFrame_tab3, text="4 Sessions",command=radiobutton_event4, variable= product_4_radiobtn4, value=4,font=("JetBrainMono",18),text_color="white")
-    radiobutton_4_4.place(x=465,y=250)
-
-
-    Total_price4 = ct.CTkLabel(productFrame_tab3,text="Total: NPR 500",font=("JetBrainMono",20),textvariable=product4_total)
-    Total_price4.place(x=460,y=300)
-
-    procduct1_btn_apply_4 = ct.CTkButton(productFrame_tab3,text="Apply",command=firstProductApply4,height=40,font=("JetBrainMono",19))
-    procduct1_btn_apply_4.place(x=680,y=293)
-
-
-
 def dashBoard_foot(parent):
     foot_frame = ct.CTkFrame(parent,width=1527,height=380,fg_color=backgrounColor)
     foot_frame.place(x=0,y=520)
@@ -367,18 +286,6 @@ def dashBoard_foot(parent):
     foot_Image = ct.CTkImage(light_image=Image.open('./assets/frame0/image_24.png'),size=(250,250))
     foot_Image_label = ct.CTkLabel(design_frame,image=foot_Image,text="",fg_color="#274250",corner_radius=37)
     foot_Image_label.place(x=970,y=50)
-
-    
-
-def dashboardPage():
-    dashbaordframe = ct.CTkFrame(main_frame,width=1568,height=911,fg_color="black")
-    dashbaordframe.place(x=0,y=0)
-    heading = ct.CTkLabel(dashbaordframe,text="Dashboard", font=("",20),text_color="white")
-    heading.place(x=200,y=50)
-    dashBoard_search(dashbaordframe)
-    dashboard_product(dashbaordframe)
-    dashBoard_foot(dashbaordframe)
-    
 ################################################################################################################################# 
 def statisticsPage():
     statisticsFrame = ct.CTkFrame(main_frame,width=1568,height=911,fg_color="black")
