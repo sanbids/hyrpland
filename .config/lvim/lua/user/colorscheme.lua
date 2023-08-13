@@ -20,7 +20,7 @@ local themes = {
 }
 
 lvim.transparent_window = true
-lvim.colorscheme = "lunar"
+lvim.colorscheme = themes.lunar
 
 local extra_opts = {
 

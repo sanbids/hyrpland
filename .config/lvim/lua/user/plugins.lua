@@ -1,4 +1,7 @@
 lvim.plugins = {
+	{
+		"cristianoliveira/vim-react-html-snippets",
+	},
 	{ "bluz71/vim-moonfly-colors", name = "moonfly", lazy = false, priority = 1000 },
 	{
 		"folke/tokyonight.nvim",

@@ -77,6 +77,7 @@
   "trouble.nvim": { "branch": "main", "commit": "20d1b30d6925213abece21d35858a16e11d1e9fc" },
   "true-zen.nvim": { "branch": "main", "commit": "2b9e210e0d1a735e1fa85ec22190115dffd963aa" },
   "vim-illuminate": { "branch": "master", "commit": "a2907275a6899c570d16e95b9db5fd921c167502" },
+  "vim-react-html-snippets": { "branch": "master", "commit": "cb032657d2a1899bd30d8c9a86db486bc5578d15" },
   "vscode-js-debug": { "branch": "main", "commit": "4ef836967faf560498fffdae82131dd1a6ced8ca" },
   "which-key.nvim": { "branch": "main", "commit": "38b990f6eabf62014018b4aae70a97d7a6c2eb88" },
   "wrapping.nvim": { "branch": "master", "commit": "5e87f1424c86c50d3bc205830aa56ed1cad45467" },
